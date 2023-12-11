@@ -4,6 +4,7 @@ import { getArticles } from "../utils/axios";
 
 const ArticleList = () => {
   const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     getArticles
@@ -12,8 +13,15 @@ const ArticleList = () => {
       })
       .then((data) => {
         setArticles(data.articles);
+        setIsLoading(false)
       });
   }, []);
+
+  if(isLoading) {
+    return (
+      <h1>Loading...</h1>
+    )
+  }
 
   return (
     <section className="articles">
