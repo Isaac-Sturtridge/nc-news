@@ -28,6 +28,10 @@
   max-width: 100%;
 }
 
+.landingPage {
+  border: 1px solid lightcoral;
+}
+
 
 
 .article {
