@@ -73,3 +73,12 @@
 .article_card > img {
   max-width: 100%;
 }
+
+.comments {
+  border: 1px solid plum;
+}
+
+.comment {
+  margin: 1rem;
+  border: 1px solid purple;
+}

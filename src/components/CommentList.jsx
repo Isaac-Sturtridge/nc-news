@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getComments } from "../utils/axios";
+import Comment from "./Comment";
 
 const CommentList = ({article_id}) => {
     const [comments, setComments] = useState([])
@@ -16,7 +17,10 @@ const CommentList = ({article_id}) => {
 
     return (
         <section className="comments">
-            <h1>Comments</h1>
+            <h2>Comments</h2>
+            {comments.map((comment) => {
+                return <Comment comment={comment} key={comment.comment_id}/>
+            })}
         </section>
     )
 }
