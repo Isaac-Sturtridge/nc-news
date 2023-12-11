@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import CommentList from "./CommentList";
 
 const Article = () => {
   const [article, setArticle] = useState({});
@@ -18,16 +19,19 @@ const Article = () => {
   }, []);
 
   return (
-    <article className="article">
-      <h1>{article.title}</h1>
-      <img src={article.article_img_url} alt={article.title} />
-      <h2>{article.author}</h2>
-      <h3>{article.topic}</h3>
-      <p>{article.body}</p>
-      <p>Comment Count: {article.comment_count}</p>
-      <p>Votes: {article.votes}</p>
-      <p>{article.created_at}</p>
-    </article>
+    <section className="article">
+      <article>
+        <h1>{article.title}</h1>
+        <img src={article.article_img_url} alt={article.title} />
+        <h2>{article.author}</h2>
+        <h3>{article.topic}</h3>
+        <p>{article.body}</p>
+        <p>Comment Count: {article.comment_count}</p>
+        <p>Votes: {article.votes}</p>
+        <p>{article.created_at}</p>
+      </article>
+      <CommentList/>
+    </section>
   );
 };
 

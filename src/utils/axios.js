@@ -5,5 +5,6 @@ const api = axios.create({
 });
 
 const getArticles = api.get("/articles");
+const getComments = api.get("/articles/:article_id/comments")
 
 export { getArticles };
