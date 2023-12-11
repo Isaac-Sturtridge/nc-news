@@ -4,6 +4,7 @@ import {getSingleArticle} from "../utils/axios"
 
 const Article = () => {
   const [article, setArticle] = useState({});
+  const [isLoading, setIsLoading] = useState(true)
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -13,8 +14,15 @@ const Article = () => {
       })
       .then((data) => {
         setArticle(data.article);
+        setIsLoading(false)
       });
   }, []);
+
+  if(isLoading) {
+    return (
+      <h1>Loading...</h1>
+    )
+  }
 
   return (
     <article className="article">
