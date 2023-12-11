@@ -1,15 +1,12 @@
-import axios from "axios";
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-
-// NB: this is a shell file that will be replaced by the corresponding file on ticket 4 when merged in, just here to display the links to the individual articles
+import ArticleCard from "./ArticleCard";
+import { getArticles } from "../utils/axios";
 
 const ArticleList = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://iz-nc-news.onrender.com/api/articles")
+    getArticles
       .then((response) => {
         return response.data;
       })
@@ -19,11 +16,10 @@ const ArticleList = () => {
   }, []);
 
   return (
-    <section>
+    <section className="articles">
+      <h1>Article List</h1>
       {articles.map((article) => {
-        return (
-          <Link to={`/articles/${article.article_id}`}>{article.title}</Link>
-        );
+        return <ArticleCard key={article.article_id} article={article} />;
       })}
     </section>
   );
