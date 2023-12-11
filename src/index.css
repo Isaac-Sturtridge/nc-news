@@ -24,6 +24,11 @@
   max-width: 100%;
 }
 
+.articles {
+  border: 1px solid lightcoral;
+  text-align: center;
+}
+
 
 .article_card {
   margin: 1rem;

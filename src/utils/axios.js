@@ -4,7 +4,11 @@ const api = axios.create({
   baseURL: "https://iz-nc-news.onrender.com/api",
 });
 
+
 const getArticles = api.get("/articles");
+const getSingleArticle = function (article_id) {
+  return api.get(`/articles/${article_id}`)
+}
 const getComments = api.get("/articles/:article_id/comments")
 
-export { getArticles, getComments };
+export { getArticles, getSingleArticle, getComments };

@@ -1,22 +1,29 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
+import {useParams} from "react-router-dom"
+import {getSingleArticle} from "../utils/axios"
 import CommentList from "./CommentList";
 
 const Article = () => {
   const [article, setArticle] = useState({});
+  const [isLoading, setIsLoading] = useState(true)
   const { article_id } = useParams();
 
   useEffect(() => {
-    axios
-      .get(`https://iz-nc-news.onrender.com/api/articles/${article_id}`)
+    getSingleArticle(article_id)
       .then((response) => {
         return response.data;
       })
       .then((data) => {
         setArticle(data.article);
+        setIsLoading(false)
       });
   }, []);
+
+  if(isLoading) {
+    return (
+      <h1>Loading...</h1>
+    )
+  }
 
   return (
     <section className="article">
