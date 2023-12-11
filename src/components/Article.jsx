@@ -21,8 +21,8 @@ const Article = () => {
     <article className="article">
       <h1>{article.title}</h1>
       <img src={article.article_img_url} alt={article.title} />
-    <h2>{article.author}</h2>
-    <h3>{article.topic}</h3>
+      <h2>{article.author}</h2>
+      <h3>{article.topic}</h3>
       <p>{article.body}</p>
       <p>Comment Count: {article.comment_count}</p>
       <p>Votes: {article.votes}</p>
