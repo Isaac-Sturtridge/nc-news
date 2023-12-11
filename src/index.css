@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  border: 1px solid lightgreen;
+}
+
+.navbar {
+  border: 1px solid lightblue;
+}
+
+.footer {
+  border: 1px solid yellow;
+}
+
+.article {
+  border: 1px solid lightcoral;
+}
