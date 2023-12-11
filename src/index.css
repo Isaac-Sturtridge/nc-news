@@ -2,6 +2,8 @@
   box-sizing: border-box;
 }
 
+
+/* universal component styles */
 .header {
   border: 1px solid lightgreen;
 }
@@ -14,57 +16,60 @@
   border: 1px solid yellow;
 }
 
-.article {
-  border: 1px solid lightcoral;
-  text-align: center;
-  padding: 1rem;
-}
-
-.article > img {
-  max-width: 100%;
-}
-
-.articles {
-  border: 1px solid lightcoral;
-  text-align: center;
-}
-
-
-.article_card {
-  margin: 1rem;
-  border: 1px solid plum;
-}
-
-.article_card > img {
-  max-width: 100%;
-}
-
-.article {
-  border: 1px solid lightcoral;
-  text-align: center;
-  padding: 1rem;
-}
-
-.article > img {
-  max-width: 100%;
-}
-
-.articles {
-  border: 1px solid lightcoral;
-  text-align: center;
-}
-
-
-.article_card {
-  margin: 1rem;
-  border: 1px solid plum;
-}
-
-.article_card > img {
-  max-width: 100%;
-}
-
-
 .landingPage {
   border: 1px solid lightcoral;
+}
+
+
+/*article list styles */
+.articles {
+  border: 1px solid lightcoral;
+  text-align: center;
+}
+
+.article_card {
+  margin: 1rem;
+  border: 1px solid plum;
+}
+
+.article_card > img {
+  max-width: 100%;
+}
+
+
+/* single article styles incl. comments */
+.article {
+  border: 1px solid lightcoral;
+  text-align: center;
+  padding: 1rem;
+}
+
+.article > img {
+  max-width: 100%;
+}
+
+
+.article {
+  border: 1px solid lightcoral;
+  text-align: center;
+  padding: 1rem;
+}
+
+.article > img {
+  max-width: 100%;
+}
+
+.articles {
+  border: 1px solid lightcoral;
+  text-align: center;
+}
+
+
+.article_card {
+  margin: 1rem;
+  border: 1px solid plum;
+}
+
+.article_card > img {
+  max-width: 100%;
 }
