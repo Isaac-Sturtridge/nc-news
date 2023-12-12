@@ -10,4 +10,8 @@ const getSingleArticle = function (article_id) {
   return api.get(`/articles/${article_id}`)
 }
 
-export { getArticles, getSingleArticle };
+const patchArticle = function (article_id, number_to_inc) {
+  return api.patch(`/articles/${article_id}`, {inc_votes: number_to_inc})
+}
+
+export { getArticles, getSingleArticle, patchArticle };

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import {useParams} from "react-router-dom"
-import {getSingleArticle} from "../utils/axios"
+import { useParams } from "react-router-dom";
+import { getSingleArticle } from "../utils/axios";
+import VoteButton from "./VoteButton";
 
 const Article = () => {
   const [article, setArticle] = useState({});
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -14,14 +15,12 @@ const Article = () => {
       })
       .then((data) => {
         setArticle(data.article);
-        setIsLoading(false)
+        setIsLoading(false);
       });
   }, []);
 
-  if(isLoading) {
-    return (
-      <h1>Loading...</h1>
-    )
+  if (isLoading) {
+    return <h1>Loading...</h1>;
   }
 
   return (
@@ -32,8 +31,8 @@ const Article = () => {
       <h3>{article.topic}</h3>
       <p>{article.body}</p>
       <p>Comment Count: {article.comment_count}</p>
-      <p>Votes: {article.votes}</p>
       <p>{article.created_at}</p>
+      <VoteButton votes={article.votes} article_id={article_id}/>
     </article>
   );
 };
