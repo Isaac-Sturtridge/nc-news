@@ -38,8 +38,17 @@
   border: 1px solid lightcoral;
   text-align: center;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .article > img {
   max-width: 100%;
+}
+
+.votingBooth {
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
 }
