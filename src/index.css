@@ -38,6 +38,15 @@
 
 
 /* single article styles incl. comments */
+
+.article-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid red;
+  padding: 0.1rem;
+}
+
 .article {
   border: 1px solid lightcoral;
   text-align: center;
@@ -50,8 +59,10 @@
 .article > img {
   max-width: 100%;
 }
+
 .comments {
   border: 1px solid plum;
+  width: 100%;
 }
 
 .comment {

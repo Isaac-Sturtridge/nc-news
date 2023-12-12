@@ -25,19 +25,19 @@ const Article = () => {
   }
 
   return (
-    <section className="article">
+    <section className="article-container">
       <Link to={"/articles"}>Back to articles</Link>
-      <article>
+      <article className="article"> 
         <h1>{article.title}</h1>
         <img src={article.article_img_url} alt={article.title} />
         <h2>{article.author}</h2>
         <h3>{article.topic}</h3>
         <p>{article.body}</p>
         <p>Comment Count: {article.comment_count}</p>
-          <p>{article.created_at}</p>
-        <VoteButton votes={article.votes} article_id={article_id}/>
-    </article>
+        <p>{article.created_at}</p>
+      <VoteButton votes={article.votes} article_id={article_id}/>
       <CommentList article_id={article_id} />
+      </article>
     </section>
   );
 };
