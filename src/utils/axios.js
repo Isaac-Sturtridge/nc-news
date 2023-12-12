@@ -9,5 +9,8 @@ const getArticles = api.get("/articles");
 const getSingleArticle = function (article_id) {
   return api.get(`/articles/${article_id}`)
 }
+const getComments = function (article_id) {
+  return api.get(`/articles/${article_id}/comments`)
+}
 
-export { getArticles, getSingleArticle };
+export { getArticles, getSingleArticle, getComments };
