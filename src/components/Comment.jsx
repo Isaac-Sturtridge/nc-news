@@ -1,6 +1,25 @@
-const Comment = ({comment}) => {
-    const {author, body, created_at, votes } = comment;
+import { useContext, useEffect, useRef, useState } from "react";
+import { loggedInUserContext } from "../context/loggedInUserContext";
+import { deleteComment } from "../utils/axios";
 
+const Comment = ({comment}) => {
+    const {author, body, created_at, votes, comment_id } = comment;
+    const {user, setUser} = useContext(loggedInUserContext)
+    const [deleteButtonClicked, setDeleteButtonClicked] = useState(false)
+    const firstRender = useRef(true)
+
+    function handleChange() {
+        setDeleteButtonClicked(!deleteButtonClicked)
+    }
+
+    useEffect(() => {
+        if(!firstRender.current) {
+            deleteComment(comment_id)
+        } else {
+            firstRender.current = false
+        }
+
+    }, [deleteButtonClicked])
 
     return (
         <article className="comment">
@@ -8,6 +27,10 @@ const Comment = ({comment}) => {
         <p>{body}</p>
         <p>Created_at: {created_at ? created_at : Date.now()}</p>
         <p>Votes: {votes ? votes : 0}</p>
+        {author === user.username ? 
+            <button onClick={handleChange}>Delete Comment</button>
+            : ''
+        }
         </article>
     )
 }

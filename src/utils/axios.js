@@ -21,4 +21,8 @@ const patchArticle = function (article_id, number_to_inc) {
   return api.patch(`/articles/${article_id}`, {inc_votes: number_to_inc})
 }
 
-export { getArticles, getSingleArticle, patchArticle, getComments, postComment };
+const deleteComment = function (comment_id) {
+  return api.delete(`/comments/${comment_id}`)
+}
+
+export { getArticles, getSingleArticle, patchArticle, getComments, postComment, deleteComment };

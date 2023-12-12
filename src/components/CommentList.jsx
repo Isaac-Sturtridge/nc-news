@@ -22,7 +22,7 @@ const CommentList = ({article_id, comment_count}) => {
             <p>Comment Count: {comment_count + comments.length - 10}</p>
             <h2>Comments</h2>
             {comments.map((comment) => {
-                return <Comment comment={comment} key={comment.comment_id}/>
+                return <Comment setComments={setComments} comment={comment} key={comment.comment_id}/>
             })}
         </section>
     )
