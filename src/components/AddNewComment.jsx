@@ -1,20 +1,48 @@
-import { useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { loggedInUserContext } from "../context/loggedInUserContext";
+import { postComment } from "../utils/axios";
 
-const AddNewComment = ({setComments}) => {
-    const [input, setInput] = useState('')
+const AddNewComment = ({ setComments, article_id }) => {
+  const { user, setUser } = useContext(loggedInUserContext);
+  const [newComment, setNewComment] = useState({
+    username: user.username,
+    body: ""
+  });
+  const [finishedComment, setFinishedComment] = useState({});
+  const firstRender = useRef(true);
 
-    function handleChange (event) {
-        setInput(event.target.value)
-    }
+  function handleChange(event) {
+    setNewComment({
+      ...newComment,
+      body: event.target.value,
+    });
+  }
 
   function handleSubmit(event) {
-    event.preventDefault()
-    setComments((currComments) => {
-        console.log(currComments)
-        return [...currComments, {body: input}]
-       // [...currComments, {body: input}]
+    event.preventDefault();
+    setFinishedComment(newComment)
+    setNewComment({
+        ...newComment,
+        body: ''
     })
   }
+
+  useEffect(() => {
+    if (!firstRender.current) {
+    console.log(finishedComment)
+      postComment(article_id, finishedComment)
+        .then((response) => {
+          return response.data;
+        })
+        .then((data) => {
+          setComments((currComments) => {
+            return [...currComments, data.comment];
+          });
+        });
+    } else {
+      firstRender.current = false;
+    }
+  }, [finishedComment]);
 
   return (
     <form className="addNewComment" onSubmit={handleSubmit}>
@@ -23,9 +51,9 @@ const AddNewComment = ({setComments}) => {
         <input
           type="text"
           placeholder="Add your comment here"
-          name="addComment"
+          name="body"
           id="addComment"
-          value={input}
+          value={newComment.body}
           onChange={handleChange}
         />
         <button>Submit comment</button>

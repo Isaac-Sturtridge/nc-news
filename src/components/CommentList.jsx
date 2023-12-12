@@ -18,7 +18,7 @@ const CommentList = ({article_id}) => {
 
     return (
         <section className="comments">
-            <AddNewComment setComments={setComments}/>
+            <AddNewComment setComments={setComments} article_id={article_id}/>
             <h2>Comments</h2>
             {comments.map((comment) => {
                 return <Comment comment={comment} key={comment.comment_id}/>
