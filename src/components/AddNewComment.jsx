@@ -9,6 +9,8 @@ const AddNewComment = ({ setComments, article_id }) => {
     body: ""
   });
   const [finishedComment, setFinishedComment] = useState({});
+  const [err, setErr] = useState(null);
+  const [isSubmittingComment, setIsSubmittingComment] = useState(false)
   const firstRender = useRef(true);
 
   function handleChange(event) {
@@ -20,39 +22,49 @@ const AddNewComment = ({ setComments, article_id }) => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    setFinishedComment(newComment)
-    // optimistically render this first
-    setComments((currComments) => {
-      finishedComment.key = "new temporary comment"
-        return [finishedComment, ...currComments]
-    })
-    setNewComment({
-        ...newComment,
-        body: ''
-    })
+    if(newComment.body.length === 0) {
+      setErr("You cannot submit an empty comment")
+    } else {
+      setErr(null)
+      setFinishedComment(newComment)
+      setNewComment({
+          ...newComment,
+          body: ''
+      })
+    }
   }
 
   useEffect(() => {
     if (!firstRender.current) {
+      setIsSubmittingComment(true)
       postComment(article_id, finishedComment)
         .then((response) => {
           return response.data;
         })
         .then((data) => {
+          setIsSubmittingComment(false)
           setComments((currComments) => {
             const newComments = [...currComments]
-            console.log(data.comment, "new data")
-            newComments.pop()
-            return [...newComments, data.comment];
+            return [data.comment, ...newComments];
           });
-        });
+        })
+        .catch((err) => {
+          setErr("Something went wrong. Please try again.")
+        })
     } else {
       firstRender.current = false;
     }
   }, [finishedComment]);
 
+  if(isSubmittingComment) {
+    return(
+      <p>Sending comment to server. Please wait...</p>
+    )
+  }
+
   return (
     <form className="addNewComment" onSubmit={handleSubmit}>
+      {err ? <p>{err}</p> : ''}
       <label htmlFor="addComment">
         Add new comment:
         <input
