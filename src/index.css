@@ -59,7 +59,17 @@
 }
 
 .addNewComment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border: 1px solid teal;
+  margin: 1rem;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.addNewComment > button {
+  max-width: 200px;
 }
 
 .comments {

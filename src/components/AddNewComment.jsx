@@ -21,6 +21,11 @@ const AddNewComment = ({ setComments, article_id }) => {
   function handleSubmit(event) {
     event.preventDefault();
     setFinishedComment(newComment)
+    // optimistically render this first
+    setComments((currComments) => {
+      finishedComment.key = "new temporary comment"
+        return [finishedComment, ...currComments]
+    })
     setNewComment({
         ...newComment,
         body: ''
@@ -29,14 +34,16 @@ const AddNewComment = ({ setComments, article_id }) => {
 
   useEffect(() => {
     if (!firstRender.current) {
-    console.log(finishedComment)
       postComment(article_id, finishedComment)
         .then((response) => {
           return response.data;
         })
         .then((data) => {
           setComments((currComments) => {
-            return [...currComments, data.comment];
+            const newComments = [...currComments]
+            console.log(data.comment, "new data")
+            newComments.pop()
+            return [...newComments, data.comment];
           });
         });
     } else {
@@ -56,8 +63,8 @@ const AddNewComment = ({ setComments, article_id }) => {
           value={newComment.body}
           onChange={handleChange}
         />
-        <button>Submit comment</button>
       </label>
+    <button>Submit comment</button>
     </form>
   );
 };
