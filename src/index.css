@@ -2,6 +2,8 @@
   box-sizing: border-box;
 }
 
+
+/* universal component styles */
 .header {
   border: 1px solid lightgreen;
 }
@@ -14,6 +16,12 @@
   border: 1px solid yellow;
 }
 
+.landingPage {
+  border: 1px solid lightcoral;
+}
+
+
+/*article list styles */
 .articles {
   border: 1px solid lightcoral;
   text-align: center;
@@ -28,12 +36,8 @@
   max-width: 100%;
 }
 
-.landingPage {
-  border: 1px solid lightcoral;
-}
 
-
-
+/* single article styles incl. comments */
 .article {
   border: 1px solid lightcoral;
   text-align: center;
@@ -45,6 +49,14 @@
 
 .article > img {
   max-width: 100%;
+}
+.comments {
+  border: 1px solid plum;
+}
+
+.comment {
+  margin: 1rem;
+  border: 1px solid purple;
 }
 
 .votingBooth {

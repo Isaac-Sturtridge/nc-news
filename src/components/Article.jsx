@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getSingleArticle } from "../utils/axios";
+import {  useParams, Link  } from "react-router-dom";;
+import {  getSingleArticle  } from "../utils/axios";
+import CommentList from "./CommentList";;
 import VoteButton from "./VoteButton";
 
 const Article = () => {
@@ -24,16 +25,20 @@ const Article = () => {
   }
 
   return (
-    <article className="article">
-      <h1>{article.title}</h1>
-      <img src={article.article_img_url} alt={article.title} />
-      <h2>{article.author}</h2>
-      <h3>{article.topic}</h3>
-      <p>{article.body}</p>
-      <p>Comment Count: {article.comment_count}</p>
-      <p>{article.created_at}</p>
-      <VoteButton votes={article.votes} article_id={article_id}/>
+    <section className="article">
+      <Link to={"/articles"}>Back to articles</Link>
+      <article>
+        <h1>{article.title}</h1>
+        <img src={article.article_img_url} alt={article.title} />
+        <h2>{article.author}</h2>
+        <h3>{article.topic}</h3>
+        <p>{article.body}</p>
+        <p>Comment Count: {article.comment_count}</p>
+          <p>{article.created_at}</p>
+        <VoteButton votes={article.votes} article_id={article_id}/>
     </article>
+      <CommentList article_id={article_id} />
+    </section>
   );
 };
 
