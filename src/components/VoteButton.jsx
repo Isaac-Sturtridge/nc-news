@@ -16,6 +16,11 @@ const VoteButton = ({ votes, article_id }) => {
         setViewVotes(viewVotes + inc_votes);
         patchArticle(article_id, inc_votes)
         .catch((err) => {
+            setViewVotes(viewVotes)
+            setHasUpvoted(false)
+            if(inc_votes === 2) {
+              setHasDownvoted(true)
+            }
             setErr("Something went wrong, please try again.")
         });
     } else {
@@ -23,6 +28,8 @@ const VoteButton = ({ votes, article_id }) => {
         setViewVotes(viewVotes - inc_votes)
         patchArticle(article_id, -inc_votes)
         .catch((err) => {
+          setViewVotes(viewVotes)
+          setHasUpvoted(true)
           setErr("Something went wrong, please try again.")
         });
     }
@@ -37,6 +44,11 @@ const VoteButton = ({ votes, article_id }) => {
         setViewVotes(viewVotes - inc_votes);
         patchArticle(article_id, -inc_votes)
         .catch((err) => {
+          setViewVotes(viewVotes)
+          setHasDownvoted(false)
+          if(inc_votes === 2) {
+            setHasUpvoted(true)
+          }
           setErr("Something went wrong, please try again.")
         });
     } else {
@@ -44,6 +56,8 @@ const VoteButton = ({ votes, article_id }) => {
         setViewVotes(viewVotes + inc_votes)
         patchArticle(article_id, inc_votes)
         .catch((err) => {
+          setViewVotes(viewVotes)
+          setHasDownvoted(true)
           setErr("Something went wrong, please try again.")
         });
     }
