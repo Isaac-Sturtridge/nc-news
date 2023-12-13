@@ -13,7 +13,7 @@ const ArticleList = () => {
   console.log(queryString)
 
   useEffect(() => {
-    getArticles(queryString)
+    getArticles
       .then((response) => {
         return response.data;
       })
