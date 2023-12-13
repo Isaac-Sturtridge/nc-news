@@ -39,7 +39,8 @@ const AddNewComment = ({ setComments, article, setArticle }) => {
     if (!firstRender.current) {
       setIsSubmittingComment(true)
       setArticle((currArticle) => {
-        return currArticle.comment_count = currArticle.comment_count + 1
+         currArticle.comment_count = currArticle.comment_count + 1
+         return currArticle
      })
       postComment(article_id, finishedComment)
         .then((response) => {
