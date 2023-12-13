@@ -36,13 +36,13 @@ const Comment = ({comment, comments, setComments, setArticle}) => {
                 setSendingDeleteRequest(false)
             })
             .catch((err) => {
-                setErr("Something went wrong, please try again.")
                 setArticle((currArticle) => {
                     currArticle.comment_count = currArticle.comment_count + 1
                     return currArticle
                 })
                 setComments(currentCommentSaveState)
                 setSendingDeleteRequest(false)
+                setErr("Something went wrong, please try again.")
             })
         } else {
             firstRender.current = false
