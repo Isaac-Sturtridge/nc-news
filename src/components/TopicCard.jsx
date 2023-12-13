@@ -1,5 +1,10 @@
 const TopicCard = ({topic}) => {
-    return <h1>{topic}</h1>
+    return (
+    <article className="topic">
+    <h1>{topic.slug}</h1>
+    <p>{topic.description}</p>
+    </article>
+    )
 }
 
 export default TopicCard;
