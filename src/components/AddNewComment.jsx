@@ -46,11 +46,13 @@ const AddNewComment = ({ setComments, article_id, setArticle }) => {
           return response.data;
         })
         .then((data) => {
-          setIsSubmittingComment(false)
           setComments((currComments) => {
             const newComments = [...currComments]
             return [data.comment, ...newComments];
           });
+        })
+        .then(() => {
+          setIsSubmittingComment(false)
         })
         .catch((err) => {
           setErr("Something went wrong. Please try again.")
