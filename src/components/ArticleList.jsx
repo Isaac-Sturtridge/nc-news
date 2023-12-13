@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import ArticleCard from "./ArticleCard";
 import { getArticles } from "../utils/axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import SortFunction from "./SortFunction";
 
 const ArticleList = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [queryString, setQueryString] = useState(useLocation().search);
+  const [searchParams, setSearchParams] = useSearchParams();
+  console.log(queryString)
 
   useEffect(() => {
     getArticles(queryString)
@@ -18,7 +20,7 @@ const ArticleList = () => {
         setArticles(data.articles);
         setIsLoading(false);
       });
-  }, [queryString]);
+  }, [queryString, searchParams]);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -27,7 +29,7 @@ const ArticleList = () => {
   return (
     <section className="articles">
       <h1>Article List</h1>
-      <SortFunction setQueryString={setQueryString}/>
+      <SortFunction setQueryString={setQueryString} searchParams={searchParams} setSearchParams={setSearchParams} />
       {articles.map((article) => {
         return <ArticleCard key={article.article_id} article={article} />;
       })}
