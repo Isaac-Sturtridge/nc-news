@@ -15,9 +15,10 @@ const Comment = ({comment, setComments}) => {
     useEffect(() => {
         if(!firstRender.current) {
             setComments((currComments) => {
+                console.log(currComments)
                 const newComments = []
                 currComments.forEach((comment) => {
-                    if(!comment.comment_id === comment_id) {
+                    if(comment.comment_id !== comment_id) {
                         newComments.push(comment)  
                     }
                 })
