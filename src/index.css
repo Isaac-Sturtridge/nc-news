@@ -48,7 +48,6 @@
   max-width: 100%;
 }
 
-
 .article {
   border: 1px solid lightcoral;
   text-align: center;
@@ -59,19 +58,18 @@
   max-width: 100%;
 }
 
-.articles {
-  border: 1px solid lightcoral;
-  text-align: center;
-}
-
-
-.article_card {
+.addNewComment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid teal;
   margin: 1rem;
-  border: 1px solid plum;
+  gap: 0.5rem;
+  padding: 0.5rem;
 }
 
-.article_card > img {
-  max-width: 100%;
+.addNewComment > button {
+  max-width: 200px;
 }
 
 .comments {

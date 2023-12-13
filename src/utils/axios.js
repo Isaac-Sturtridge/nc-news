@@ -13,4 +13,8 @@ const getComments = function (article_id) {
   return api.get(`/articles/${article_id}/comments`)
 }
 
-export { getArticles, getSingleArticle, getComments };
+const postComment = function (article_id, finishedComment) {
+  return api.post(`/articles/${article_id}/comments`, finishedComment)
+}
+
+export { getArticles, getSingleArticle, getComments, postComment };
