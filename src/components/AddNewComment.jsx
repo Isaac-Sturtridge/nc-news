@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { loggedInUserContext } from "../context/loggedInUserContext";
 import { postComment } from "../utils/axios";
 
-const AddNewComment = ({ setComments, article, setArticle }) => {
+const AddNewComment = ({ setComments, article_id, setArticle }) => {
   const { user, setUser } = useContext(loggedInUserContext);
   const [newComment, setNewComment] = useState({
     username: user.username,
@@ -12,7 +12,6 @@ const AddNewComment = ({ setComments, article, setArticle }) => {
   const [err, setErr] = useState(null);
   const [isSubmittingComment, setIsSubmittingComment] = useState(false)
   const firstRender = useRef(true);
-  const {article_id} = article;
 
   function handleChange(event) {
     setNewComment({
