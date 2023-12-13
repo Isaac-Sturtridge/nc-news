@@ -18,9 +18,9 @@ const SortFunction = ({ setQueryString, searchParams, setSearchParams }) => {
   return (
     <section>
       <h2>Sort By:</h2>
-      <p>Date</p>
-      <p>Comment Count</p>
-      <p>Votes</p>
+      <Link to={`/articles?sort_by=created_at`} onClick={handleClick}><p>Date</p></Link>
+      <Link to={`/articles?sort_by=comment_count`} onClick={handleClick}><p>Comment Count</p></Link>
+      <Link to={`/articles?sort_by=votes`} onClick={handleClick}><p>Votes</p></Link>
       <Link to={`/articles?order=asc`} onClick={handleClick}>
         <p>Ascending</p>
       </Link>

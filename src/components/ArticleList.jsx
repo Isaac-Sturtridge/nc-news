@@ -9,6 +9,7 @@ const ArticleList = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [queryString, setQueryString] = useState(useLocation().search);
   const [searchParams, setSearchParams] = useSearchParams();
+  const {search} = useLocation();
   console.log(queryString)
 
   useEffect(() => {
@@ -20,7 +21,7 @@ const ArticleList = () => {
         setArticles(data.articles);
         setIsLoading(false);
       });
-  }, [queryString, searchParams]);
+  }, [queryString]);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
