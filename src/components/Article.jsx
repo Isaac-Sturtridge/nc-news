@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import { getSingleArticle } from "../utils/axios";
-import CommentList from "./CommentList";
+import {  useParams, Link  } from "react-router-dom";;
+import {  getSingleArticle  } from "../utils/axios";
+import CommentList from "./CommentList";;
+import VoteButton from "./VoteButton";
 
 const Article = () => {
   const [article, setArticle] = useState({});
@@ -24,18 +25,18 @@ const Article = () => {
   }
 
   return (
-    <section className="article">
+    <section className="article-container">
       <Link to={"/articles"}>Back to articles</Link>
-      <article>
+      <article className="article"> 
         <h1>{article.title}</h1>
         <img src={article.article_img_url} alt={article.title} />
         <h2>{article.author}</h2>
         <h3>{article.topic}</h3>
         <p>{article.body}</p>
-        <p>Votes: {article.votes}</p>
         <p>{article.created_at}</p>
-      </article>
+      <VoteButton votes={article.votes} article_id={article_id}/>
       <CommentList article_id={article_id} comment_count={article.comment_count}/>
+      </article>
     </section>
   );
 };

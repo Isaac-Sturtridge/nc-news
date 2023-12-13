@@ -17,4 +17,8 @@ const postComment = function (article_id, finishedComment) {
   return api.post(`/articles/${article_id}/comments`, finishedComment)
 }
 
-export { getArticles, getSingleArticle, getComments, postComment };
+const patchArticle = function (article_id, number_to_inc) {
+  return api.patch(`/articles/${article_id}`, {inc_votes: number_to_inc})
+}
+
+export { getArticles, getSingleArticle, patchArticle, getComments, postComment };
