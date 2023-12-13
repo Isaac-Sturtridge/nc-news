@@ -1,14 +1,19 @@
-
 import { Link } from "react-router-dom";
 
-const SortFunction = ({setQueryString, searchParams, setSearchParams}) => {
+const SortFunction = ({ setQueryString, searchParams, setSearchParams }) => {
 
-function handleClick(event) {
-    let params = Object.fromEntries(event.target.parentElement.search.slice(1,).split('&').map((param) => param.split("=")))
-    setSearchParams(params)
-    setQueryString("?" + [...searchParams].map((param) => param.join("=")).join("&") )
-}
-
+  function handleClick(event) {
+    let params = Object.fromEntries(
+      event.target.parentElement.search
+        .slice(1)
+        .split("&")
+        .map((param) => param.split("="))
+    );
+    setSearchParams(params);
+    setQueryString(
+      "?" + [...searchParams].map((param) => param.join("=")).join("&")
+    );
+  }
 
   return (
     <section>
@@ -16,8 +21,12 @@ function handleClick(event) {
       <p>Date</p>
       <p>Comment Count</p>
       <p>Votes</p>
-      <Link to={`/articles?order=asc`} onClick={handleClick}><p>Ascending</p></Link>
-      <Link to={`/articles?order=desc`} onClick={handleClick}><p>Descending</p></Link>
+      <Link to={`/articles?order=asc`} onClick={handleClick}>
+        <p>Ascending</p>
+      </Link>
+      <Link to={`/articles?order=desc`} onClick={handleClick}>
+        <p>Descending</p>
+      </Link>
     </section>
   );
 };
