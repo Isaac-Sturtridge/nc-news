@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { loggedInUserContext } from "../context/loggedInUserContext";
 import { deleteComment } from "../utils/axios";
 
-const Comment = ({comment, setComments}) => {
+const Comment = ({comment, setComments, article, setArticle}) => {
     const {author, body, created_at, votes, comment_id } = comment;
     const {user, setUser} = useContext(loggedInUserContext)
     const [deleteButtonClicked, setDeleteButtonClicked] = useState(false)
@@ -24,6 +24,9 @@ const Comment = ({comment, setComments}) => {
                 })
                 console.log(newComments)
                 return newComments
+            })
+            setArticle((currArticle) => {
+               return currArticle, currArticle.comment_count - 1
             })
             deleteComment(comment_id)
         } else {
