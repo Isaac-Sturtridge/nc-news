@@ -35,7 +35,7 @@ const Article = () => {
         <p>{article.body}</p>
         <p>{article.created_at}</p>
       <VoteButton votes={article.votes} article_id={article_id}/>
-      <CommentList article_id={article_id} comment_count={article.comment_count}/>
+      <CommentList setArticle={setArticle} article={article}/>
       </article>
     </section>
   );

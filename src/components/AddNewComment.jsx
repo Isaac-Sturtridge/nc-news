@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { loggedInUserContext } from "../context/loggedInUserContext";
 import { postComment } from "../utils/axios";
 
-const AddNewComment = ({ setComments, article_id }) => {
+const AddNewComment = ({ setComments, article_id, setArticle }) => {
   const { user, setUser } = useContext(loggedInUserContext);
   const [newComment, setNewComment] = useState({
     username: user.username,
@@ -37,16 +37,22 @@ const AddNewComment = ({ setComments, article_id }) => {
   useEffect(() => {
     if (!firstRender.current) {
       setIsSubmittingComment(true)
+      setArticle((currArticle) => {
+         currArticle.comment_count = currArticle.comment_count + 1
+         return currArticle
+     })
       postComment(article_id, finishedComment)
         .then((response) => {
           return response.data;
         })
         .then((data) => {
-          setIsSubmittingComment(false)
           setComments((currComments) => {
             const newComments = [...currComments]
             return [data.comment, ...newComments];
           });
+        })
+        .then(() => {
+          setIsSubmittingComment(false)
         })
         .catch((err) => {
           setErr("Something went wrong. Please try again.")
