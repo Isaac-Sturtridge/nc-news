@@ -30,7 +30,7 @@ const ArticleList = () => {
   return (
     <section className="articles">
       <h1>Article List</h1>
-      <SortFunction setSearchParams={setSearchParams} location={location}/>
+      <SortFunction setSearchParams={setSearchParams} searchParams={searchParams}/>
       {articles.map((article) => {
         return <ArticleCard key={article.article_id} article={article} />;
       })}

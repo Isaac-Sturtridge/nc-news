@@ -2,15 +2,16 @@ import { constructSearchParams } from "../utils/params";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const SortFunction = ({ setSearchParams, location }) => {
-  let [queryString, setQueryString] = useState('?order=desc&')
-
+const SortFunction = ({ setSearchParams, searchParams }) => {
+  let [queryString, setQueryString] = useState(`?order=desc&${searchParams.topic ? `topic=${searchParams.topic}&` : ''}`)
+  
+  console.log(queryString)
   function handleAsc() {
-    setQueryString(`?order=asc&`)
+    setQueryString(`?order=asc&${searchParams.topic ? `topic=${searchParams.topic}&` : ''}`)
   }
   
   function handleDesc() {
-    setQueryString(`?order=desc&`)
+    setQueryString(`?order=desc&${searchParams.topic ? `topic=${searchParams.topic}&` : ''}`)
   }
 
   function handleSubmit(event) {
