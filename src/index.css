@@ -104,3 +104,11 @@
   border: 1px solid plum;
   width: 50%;
 }
+
+/*error*/
+
+.error {
+  color: red;
+  text-align: center;
+  border: 2px solid red;
+}
