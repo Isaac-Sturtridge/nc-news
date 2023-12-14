@@ -10,8 +10,6 @@ const SortFunction = ({ setParsedParams, setSearchParams, searchParams }) => {
         .map((param) => param.split("="))
     );
     setSearchParams(params);
-    // changing this down here as otherwise it doesn't update the searchParams in time for the useEffect
-    setParsedParams(Object.fromEntries(searchParams))
   }
 
   return (
