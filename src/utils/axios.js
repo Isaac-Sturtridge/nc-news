@@ -9,7 +9,11 @@ const getArticles = function (queryString) {
 };
 const getTopics = api.get("/topics");
 const getSingleArticle = function (article_id) {
-  return api.get(`/articles/${article_id}`);
+  return api.get(`/articles/${article_id}`).catch((err) => {
+    if(err.response) {
+      return Promise.reject({status: err.response.status, message: err.response.data.msg})
+    }
+  });
 };
 const getComments = function (article_id) {
   return api.get(`/articles/${article_id}/comments`);

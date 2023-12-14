@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import ArticleList from "./components/ArticleList";
 import LandingPage from "./components/LandingPage";
 import TopicList from "./components/TopicList";
+import Error from "./components/Error";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/articles/:article_id" element={<Article />} />
         <Route path="/articles" element={<ArticleList />}></Route>
         <Route path="/topics" element={<TopicList/>}></Route>
+        <Route path="/*" element={<Error status={404} message={'Route Not Found'}/>}></Route>
       </Routes>
       <Footer />
     </>
