@@ -3,10 +3,12 @@ import {  useParams, Link  } from "react-router-dom";;
 import {  getSingleArticle  } from "../utils/axios";
 import CommentList from "./CommentList";;
 import VoteButton from "./VoteButton";
+import Error from "./Error";
 
 const Article = () => {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [err, setErr] = useState(null)
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -17,8 +19,15 @@ const Article = () => {
       .then((data) => {
         setArticle(data.article);
         setIsLoading(false);
-      });
+      })
+      .catch((err) => {
+        setErr(err)
+      })
   }, []);
+
+  if(err) {
+    return <Error status={err.status} message={err.message}/>
+  }
 
   if (isLoading) {
     return <h1>Loading...</h1>;
