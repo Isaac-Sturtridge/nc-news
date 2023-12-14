@@ -30,11 +30,15 @@ const patchArticle = function (article_id, number_to_inc) {
   return api.patch(`/articles/${article_id}`, { inc_votes: number_to_inc });
 };
 
+const deleteComment = function (comment_id) {
+  return api.delete(`/comments/${comment_id}`)
+}
+
 export {
   getArticles,
   getTopics,
   getSingleArticle,
   patchArticle,
   getComments,
-  postComment,
+  postComment, deleteComment,
 };
