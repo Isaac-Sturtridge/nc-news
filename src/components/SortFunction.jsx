@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 const SortFunction = ({ setSearchParams, searchParams }) => {
   let [queryString, setQueryString] = useState(`?order=desc&${searchParams.topic ? `topic=${searchParams.topic}&` : ''}`)
   
-  console.log(queryString)
   function handleAsc() {
     setQueryString(`?order=asc&${searchParams.topic ? `topic=${searchParams.topic}&` : ''}`)
   }
