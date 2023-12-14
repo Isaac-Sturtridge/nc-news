@@ -21,7 +21,6 @@ const Article = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err)
         setErr(err)
       })
   }, []);

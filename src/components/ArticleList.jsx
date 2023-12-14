@@ -4,10 +4,12 @@ import { getArticles } from "../utils/axios";
 import { useLocation } from "react-router-dom";
 import SortFunction from "./SortFunction";
 import { constructSearchParams } from "../utils/params";
+import Error from "./Error";
 
 const ArticleList = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [err, setErr] = useState(null)
   const [location, setLocation] = useState(useLocation().search)
   const [searchParams, setSearchParams] = useState(constructSearchParams(location));
   
@@ -20,8 +22,14 @@ const ArticleList = () => {
       .then((data) => {
         setArticles(data.articles);
         setIsLoading(false);
-      });
-  }, [searchParams]);
+      }).catch((err) => {
+        setErr(err)
+      })
+  }, [searchParams, location]);
+
+  if(err) {
+    return <Error status={err.status} message={err.message}/>
+  }
 
   if (isLoading) {
     return <h1>Loading...</h1>;
