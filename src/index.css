@@ -36,6 +36,11 @@
   max-width: 100%;
 }
 
+.sortBy {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 
 /* single article styles incl. comments */
 

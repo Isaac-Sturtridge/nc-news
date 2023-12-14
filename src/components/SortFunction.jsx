@@ -17,7 +17,8 @@ const SortFunction = ({ setQueryString, searchParams, setSearchParams }) => {
 
   return (
     <section>
-      <h2>Sort By:</h2>
+      <h3>Sort By:</h3>
+      <section className="sortBy">
       <Link to={`/articles?sort_by=created_at`} onClick={handleClick}><p>Date</p></Link>
       <Link to={`/articles?sort_by=comment_count`} onClick={handleClick}><p>Comment Count</p></Link>
       <Link to={`/articles?sort_by=votes`} onClick={handleClick}><p>Votes</p></Link>
@@ -27,6 +28,7 @@ const SortFunction = ({ setQueryString, searchParams, setSearchParams }) => {
       <Link to={`/articles?order=desc`} onClick={handleClick}>
         <p>Descending</p>
       </Link>
+      </section>
     </section>
   );
 };
