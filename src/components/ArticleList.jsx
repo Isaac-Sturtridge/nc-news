@@ -10,6 +10,9 @@ const ArticleList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [parsedParams, setParsedParams] = useState(Object.fromEntries(searchParams));
   const {search} = useLocation();
+  // still got the issue where it is taking two tries to rerender
+  console.log(searchParams)
+  console.log(parsedParams)
 
   useEffect(() => {
     getArticles(parsedParams.topic, parsedParams.sort_by, parsedParams.order)
@@ -20,7 +23,7 @@ const ArticleList = () => {
         setArticles(data.articles);
         setIsLoading(false);
       });
-  }, []);
+  }, [parsedParams]);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -29,7 +32,7 @@ const ArticleList = () => {
   return (
     <section className="articles">
       <h1>Article List</h1>
-      <SortFunction searchParams={searchParams} setSearchParams={setSearchParams} />
+      <SortFunction setSearchParams={setSearchParams} setParsedParams={setParsedParams} searchParams={searchParams}/>
       {articles.map((article) => {
         return <ArticleCard key={article.article_id} article={article} />;
       })}

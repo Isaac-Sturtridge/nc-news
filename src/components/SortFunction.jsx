@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const SortFunction = ({ setQueryString, searchParams, setSearchParams }) => {
+const SortFunction = ({ setParsedParams, setSearchParams, searchParams }) => {
 
   function handleClick(event) {
     let params = Object.fromEntries(
@@ -10,9 +10,8 @@ const SortFunction = ({ setQueryString, searchParams, setSearchParams }) => {
         .map((param) => param.split("="))
     );
     setSearchParams(params);
-    setQueryString(
-      "?" + [...searchParams].map((param) => param.join("=")).join("&")
-    );
+    // changing this down here as otherwise it doesn't update the searchParams in time for the useEffect
+    setParsedParams(Object.fromEntries(searchParams))
   }
 
   return (
