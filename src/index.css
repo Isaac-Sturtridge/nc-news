@@ -36,6 +36,27 @@
   max-width: 100%;
 }
 
+.sortBy {
+  display: flex;
+  gap: 1rem;
+  justify-content: end;
+  margin-right: 0.5rem;
+}
+
+.sort_option {
+  background-color: lightcoral;
+}
+
+.clicked {
+  background-color: lightgreen;
+  
+}
+
+.sort_submit {
+  background-color: darkred;
+  color: white;
+}
+
 
 /* single article styles incl. comments */
 

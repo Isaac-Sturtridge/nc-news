@@ -4,9 +4,16 @@ const api = axios.create({
   baseURL: "https://iz-nc-news.onrender.com/api",
 });
 
-const getArticles = function (queryString) {
-  return api.get(`/articles${queryString}`);
+const getArticles = function (topic, sort_by, order) {
+  return api.get(`/articles`, {
+    params: {
+      topic: topic,
+      sort_by: sort_by,
+      order: order
+    },
+  });
 };
+
 const getTopics = api.get("/topics");
 const getSingleArticle = function (article_id) {
   return api.get(`/articles/${article_id}`).catch((err) => {
