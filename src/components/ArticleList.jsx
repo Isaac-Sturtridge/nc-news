@@ -3,16 +3,17 @@ import ArticleCard from "./ArticleCard";
 import { getArticles } from "../utils/axios";
 import { useLocation, useSearchParams } from "react-router-dom";
 import SortFunction from "./SortFunction";
+import { constructSearchParams } from "../utils/params";
 
 const ArticleList = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [searchParams, setSearchParams] = useState(Object.fromEntries(useSearchParams()));
-  const {search} = useLocation();
-  // still got the issue where it is taking two tries to rerender
+  const [location, setLocation] = useState(useLocation().search)
+  const [searchParams, setSearchParams] = useState(constructSearchParams(location));
+  
 
   useEffect(() => {
-    getArticles(searchParams.topic, searchParams.sort_by, searchParams.order)
+    getArticles(searchParams.topic , searchParams.sort_by, searchParams.order)
       .then((response) => {
         return response.data;
       })

@@ -1,15 +1,11 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { constructSearchParams } from "../utils/params";
 
-const SortFunction = ({ setParsedParams, setSearchParams, searchParams }) => {
+const SortFunction = ({ setSearchParams }) => {
 
   function handleClick(event) {
-    let params = Object.fromEntries(
-      event.target.parentElement.search
-        .slice(1)
-        .split("&")
-        .map((param) => param.split("="))
-    );
-    setSearchParams(params);
+    setSearchParams(constructSearchParams(event.target.parentElement.search));
   }
 
   return (
