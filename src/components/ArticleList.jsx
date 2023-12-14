@@ -7,13 +7,12 @@ import SortFunction from "./SortFunction";
 const ArticleList = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [queryString, setQueryString] = useState(useLocation().search);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [parsedParams, setParsedParams] = useState(Object.fromEntries(searchParams));
   const {search} = useLocation();
-  console.log(queryString)
 
   useEffect(() => {
-    getArticles()
+    getArticles(parsedParams.topic, parsedParams.sort_by, parsedParams.order)
       .then((response) => {
         return response.data;
       })
@@ -21,7 +20,7 @@ const ArticleList = () => {
         setArticles(data.articles);
         setIsLoading(false);
       });
-  }, [queryString]);
+  }, []);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -30,7 +29,7 @@ const ArticleList = () => {
   return (
     <section className="articles">
       <h1>Article List</h1>
-      <SortFunction setQueryString={setQueryString} searchParams={searchParams} setSearchParams={setSearchParams} />
+      <SortFunction searchParams={searchParams} setSearchParams={setSearchParams} />
       {articles.map((article) => {
         return <ArticleCard key={article.article_id} article={article} />;
       })}
