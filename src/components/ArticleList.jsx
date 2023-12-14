@@ -10,8 +10,6 @@ const ArticleList = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [location, setLocation] = useState(useLocation().search)
   const [searchParams, setSearchParams] = useState(constructSearchParams(location));
-  console.log(location)
-  console.log(searchParams)
   
 
   useEffect(() => {
@@ -32,7 +30,7 @@ const ArticleList = () => {
   return (
     <section className="articles">
       <h1>Article List</h1>
-      <SortFunction setSearchParams={setSearchParams}/>
+      <SortFunction setSearchParams={setSearchParams} location={location}/>
       {articles.map((article) => {
         return <ArticleCard key={article.article_id} article={article} />;
       })}
