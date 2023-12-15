@@ -1,5 +1,11 @@
 const Header = () => {
-  return <h1 className="header">Header</h1>;
+  return (
+    <section className="header">
+      <section className="innerHeader">
+        <h1>Iz News</h1>
+      </section>
+    </section>
+  );
 };
 
 export default Header;
