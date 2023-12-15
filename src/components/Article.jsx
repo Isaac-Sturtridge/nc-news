@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import {  useParams, Link  } from "react-router-dom";;
-import {  getSingleArticle  } from "../utils/axios";
-import CommentList from "./CommentList";;
+import { useParams, Link } from "react-router-dom";
+import { getSingleArticle } from "../utils/axios";
+import CommentList from "./CommentList";
 import VoteButton from "./VoteButton";
 import Error from "./Error";
 
 const Article = () => {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [err, setErr] = useState(null)
+  const [err, setErr] = useState(null);
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -21,12 +21,12 @@ const Article = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        setErr(err)
-      })
+        setErr(err);
+      });
   }, []);
 
-  if(err) {
-    return <Error status={err.status} message={err.message}/>
+  if (err) {
+    return <Error status={err.status} message={err.message} />;
   }
 
   if (isLoading) {
@@ -35,16 +35,18 @@ const Article = () => {
 
   return (
     <section className="article-container">
-      <Link to={"/articles"}>Back to articles</Link>
-      <article className="article"> 
-        <h1>{article.title}</h1>
-        <img src={article.article_img_url} alt={article.title} />
-        <h2>{article.author}</h2>
-        <h3>{article.topic}</h3>
-        <p>{article.body}</p>
-        <p>{article.created_at}</p>
-      <VoteButton votes={article.votes} article_id={article_id}/>
-      <CommentList setArticle={setArticle} article={article}/>
+      <article className="article">
+          <h1>{article.title}</h1>
+          <img src={article.article_img_url} alt={article.title} />
+          <section className="articleText">
+            <h2>{article.author}</h2>
+            <h3>{article.topic}</h3>
+            <p>{article.body}</p>
+            <p>{article.created_at}</p>
+          </section>
+        <VoteButton votes={article.votes} article_id={article_id} />
+        <Link to={"/articles"}>Back to articles</Link>
+        <CommentList setArticle={setArticle} article={article} />
       </article>
     </section>
   );

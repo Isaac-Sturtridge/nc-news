@@ -66,9 +66,9 @@ const VoteButton = ({ votes, article_id }) => {
   return (
     <section className="votingBooth">
       {err ? <p>{err}</p> : ""}
-      <button onClick={increaseVotes}>{hasUpvoted ? "Undo 👍" : "👍"}</button>
+      <button className="btn btn-outline-primary" onClick={increaseVotes}>{hasUpvoted ? "Undo 👍" : "👍"}</button>
       {viewVotes}
-      <button onClick={decreaseVotes}>{hasDownvoted ? "Undo 👎" : "👎"}</button>
+      <button className="btn btn-outline-primary" onClick={decreaseVotes}>{hasDownvoted ? "Undo 👎" : "👎"}</button>
     </section>
   );
 };

@@ -82,7 +82,7 @@ const AddNewComment = ({ setComments, article_id, setArticle }) => {
           onChange={handleChange}
         />
       </label>
-    <button>Submit comment</button>
+    <button className="btn btn-outline-success">Submit comment</button>
     </form>
   );
 };

@@ -47,7 +47,7 @@ const Comment = ({comment, comments, setComments, setArticle}) => {
         {err ? <p>{err}</p> : ''}
         {sendingDeleteRequest ? <p>Sending delete request. Please wait...</p> : ""}
         {author === user.username ? 
-            <button onClick={handleChange}>Delete Comment</button>
+            <button className="btn btn-outline-danger" onClick={handleChange}>Delete Comment</button>
             : ''
         }
         </article>
