@@ -37,11 +37,13 @@ const ArticleList = () => {
 
   return (
     <section className="articles">
-      <h1>Article List</h1>
+      <h1>Today's Articles</h1>
       <SortFunction setSearchParams={setSearchParams} searchParams={searchParams}/>
+      <section className="articleList">
       {articles.map((article) => {
         return <ArticleCard key={article.article_id} article={article} />;
       })}
+      </section>
     </section>
   );
 };

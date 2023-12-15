@@ -1,8 +1,11 @@
 import {Link} from "react-router-dom"
+import ArticleList from "./ArticleList";
 
 const LandingPage = () => {
     return (
-        <Link to={"/articles"}><h1 className="landingPage">Articles</h1></Link>
+        <main className="landingPage">
+        <ArticleList/>
+        </main>
     )   
 
 }

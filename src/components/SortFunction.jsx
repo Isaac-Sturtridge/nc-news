@@ -73,7 +73,7 @@ const SortFunction = ({ setSearchParams, searchParams }) => {
   }
 
   return (
-    <section>
+    <section className="sortByContainer">
       <h3>Sort By:</h3>
       <form className="sortBy">
         <p>Choose your sort options: </p>
@@ -87,10 +87,10 @@ const SortFunction = ({ setSearchParams, searchParams }) => {
           Votes
         </button>
         <button type="button" className={`sort_option ${orderClicked === 'asc' ? 'clicked' : ''}`} onClick={handleAsc} value="asc">
-          <p>Ascending</p>
+          Ascending
         </button>
         <button type="button" className={`sort_option ${orderClicked === 'desc' ? 'clicked' : ''}`} onClick={handleDesc} value="desc">
-          <p>Descending</p>
+          Descending
         </button>
         <button type="submit" className="sort_submit" onClick={handleSubmit}>
           Submit Sort

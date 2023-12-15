@@ -44,23 +44,38 @@
 }
 
 .landingPage {
-  border: 1px solid lightcoral;
+  min-height: 80vh;
 }
 
 
 /*article list styles */
 .articles {
-  border: 1px solid lightcoral;
+  border: 1rem solid #2F3C7E;
+  background-color: #FCF6F5;
   text-align: center;
+  color: #040c13;
 }
+
+.articleList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+}
+
 
 .article_card {
   margin: 1rem;
-  border: 1px solid plum;
+  border: 1rem solid #2F3C7E;
+  background-color: #FCF6F5;
 }
 
-.article_card > img {
-  max-width: 100%;
+.article_image {
+  max-width: 90%;
+}
+
+.sortByContainer {
+  border-top: 0.4rem solid #2F3C7E;
+  border-bottom: 0.4rem solid #2F3C7E;
 }
 
 .sortBy {
@@ -68,6 +83,15 @@
   gap: 1rem;
   justify-content: end;
   margin-right: 0.5rem;
+}
+
+.sortBy > h3 {
+  font-size: 1.5rem;
+}
+
+.sortBy > button {
+  height: 30%;
+  border-radius: 0.5rem;
 }
 
 .sort_option {
