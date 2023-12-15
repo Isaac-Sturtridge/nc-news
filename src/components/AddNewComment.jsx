@@ -71,9 +71,9 @@ const AddNewComment = ({ setComments, article_id, setArticle }) => {
   return (
     <form className="addNewComment" onSubmit={handleSubmit}>
       {err ? <p>{err}</p> : ''}
-      <label htmlFor="addComment">
-        Add new comment:
+      <label htmlFor="addComment form-label">
         <input
+        className="form-control"
           type="text"
           placeholder="Add your comment here"
           name="body"
