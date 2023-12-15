@@ -51,11 +51,18 @@
 
 
 /*article list styles */
+.article-list-container {
+  background-color: #2F3C7E;
+}
+
+
 .articles {
   border: 1rem solid #2F3C7E;
   background-color: #FCF6F5;
   text-align: center;
   color: #040c13;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .articleList {

@@ -9,15 +9,17 @@ import TopicList from "./components/TopicList";
 import Error from "./components/Error";
 
 function App() {
+
   return (
     <>
       <Header />
-      <Navbar />
+      <Navbar/>
       <Routes>
         <Route path="/" element={<LandingPage/>}></Route>
         <Route path="/articles/:article_id" element={<Article />} />
         <Route path="/articles" element={<ArticleList />}></Route>
         <Route path="/topics" element={<TopicList/>}></Route>
+        <Route path="/topics/:topic" element={<ArticleList/>}></Route>
         <Route path="/*" element={<Error status={404} message={'Route Not Found'}/>}></Route>
       </Routes>
       <Footer />

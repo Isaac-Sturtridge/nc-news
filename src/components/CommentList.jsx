@@ -29,7 +29,6 @@ const CommentList = ({ article, setArticle }) => {
         article_id={article_id}
         setArticle={setArticle}
       />
-      <h2>Comments</h2>
       <button className="btn btn-primary" onClick={handleShowComments}>{showComments ? "Hide" : "Show"} comments</button>
       {showComments ? <section id="comment-list">
         <p>Total comments: {comment_count}</p>
