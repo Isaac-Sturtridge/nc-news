@@ -10,6 +10,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  min-height: 5vh;
 }
 
 .innerHeader {
@@ -29,12 +30,14 @@
   background-color: #FCF6F5;
   justify-content: space-evenly;
   border: 0.4rem solid #2F3C7E;
+  min-height: 5vh;
 }
 
 .footer {
   padding: 0.3rem;
   background-color: #2F3C7E;
   text-align: center;
+  min-height: 5.1vh;
 }
 
 .footer h2 {
@@ -116,6 +119,7 @@
   align-items: center;
   background-color: #2F3C7E;
   text-align: center;
+  min-height: 75vh;
   margin: 0 auto;
 }
 
@@ -174,17 +178,26 @@
 
 /* topics */
 
+.topicContainer {
+  background-color: #2F3C7E;
+}
+
 .topics {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid lightcoral;
+  border: 0.4rem solid #2F3C7E;
   text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  min-height: 75vh;
+  background-color: #FCF6F5;
 }
 
 .topic {
-  border: 1px solid plum;
+  border: 0.2rem solid #2F3C7E;
   width: 50%;
+  margin: 0.5rem;
 }
 
 /*error*/

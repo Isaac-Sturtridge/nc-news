@@ -14,11 +14,13 @@ const TopicList = () => {
         })
     }, [])
     return (
+        <section className="topicContainer">
         <section className="topics">
-            <h1>Topic List</h1>
+            <h1>Topics</h1>
             {topics.map((topic) => {
                 return <TopicCard topic={topic} key={topic.slug}/>
             })}
+        </section>
         </section>
     )
 }
