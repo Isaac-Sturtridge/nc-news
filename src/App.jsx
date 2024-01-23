@@ -7,6 +7,7 @@ import ArticleList from "./components/ArticleList";
 import LandingPage from "./components/LandingPage";
 import TopicList from "./components/TopicList";
 import Error from "./components/Error";
+import AddNewArticle from "./components/AddNewArticle";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/topics" element={<TopicList/>}></Route>
         <Route path="/topics/:topic" element={<ArticleList/>}></Route>
         <Route path="/*" element={<Error status={404} message={'Route Not Found'}/>}></Route>
+        <Route path="/new-article" element={<AddNewArticle/>}></Route>
       </Routes>
       <Footer />
     </>

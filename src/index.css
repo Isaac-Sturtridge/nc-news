@@ -167,6 +167,16 @@
   max-width: 100%;
 }
 
+.addNewArticle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 0.4rem solid #2F3C7E;
+  margin: 1rem;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
 .addNewComment {
   display: flex;
   flex-direction: column;

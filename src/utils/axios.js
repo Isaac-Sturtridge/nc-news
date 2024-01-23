@@ -14,6 +14,10 @@ const getArticles = function (topic, sort_by, order) {
   });
 };
 
+const postArticle = function () {
+  return api.post(`/articles`)
+}
+
 const getTopics = api.get("/topics");
 const getSingleArticle = function (article_id) {
   return api.get(`/articles/${article_id}`).catch((err) => {
@@ -40,6 +44,7 @@ const deleteComment = function (comment_id) {
 
 export {
   getArticles,
+  postArticle,
   getTopics,
   getSingleArticle,
   patchArticle,
