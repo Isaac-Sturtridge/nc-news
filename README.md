@@ -11,7 +11,7 @@ Articles can be read, and they can accept votes (up or down) and comments from u
 
 Users can view articles filtered by topics. They can also sort the article list (filtered or unfiltered) by votes, comment count, date created, and choose ascending or descending order.
 
-To use the app, try navigating the site. To sidestep one known issue, if you have filtered by topic and then want to see the whole article list again, rather than clicking 'Articles' on the navbar, click 'Topics' -> 'Article'. Current implementation is a generic logged-in user, chosen from the database as 'jess-jelly'. Adding articles is planned, followed by user authentication.
+To use the app, try navigating the site. Current implementation is a generic logged-in user, chosen from the database as 'jess-jelly'. Adding articles was added to the frontend on 23/01/24, with integration with backend planned.
 
 ## Backend
 
